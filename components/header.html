@@ -1,0 +1,55 @@
+<header class="fixed w-full top-0 z-50 glass-card border-b border-sui-blue/20" role="banner">
+    <nav class="container mx-auto px-6 py-4" role="navigation" aria-label="Main navigation">
+        <div class="flex items-center justify-between">
+            <!-- Logo -->
+            <a href="./" class="flex items-center space-x-3 group" aria-label="Movers.Builders Home">
+                <div class="w-10 h-10 bg-gradient-to-br from-sui-blue to-sui-cyan rounded-lg flex items-center justify-center group-hover:animate-pulse">
+                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div class="font-satoshi font-medium text-lg">
+                    <div class="gradient-text">Movers</div>
+                    <div class="gradient-text">Builders</div>
+                </div>
+            </a>
+
+            <!-- Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <nav aria-label="Primary navigation">
+                    <ul class="flex items-center space-x-8">
+                        <li><a href="#services" class="text-gray-300 hover:text-sui-cyan transition-colors duration-300">Services</a></li>
+                        <li><a href="#expertise" class="text-gray-300 hover:text-sui-cyan transition-colors duration-300">Expertise</a></li>
+                        <li><a href="#team" class="text-gray-300 hover:text-sui-cyan transition-colors duration-300">Team</a></li>
+                        <li>
+                            <button class="bg-gradient-to-r from-sui-blue to-sui-cyan px-6 py-2 rounded-full hover-glow transition-all duration-300" aria-label="Connect with us">
+                                Connect
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden p-2" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden" role="navigation" aria-label="Mobile navigation">
+            <ul class="mt-4 space-y-4">
+                <li><a href="#services" class="block text-gray-300 hover:text-sui-cyan transition-colors duration-300">Services</a></li>
+                <li><a href="#expertise" class="block text-gray-300 hover:text-sui-cyan transition-colors duration-300">Expertise</a></li>
+                <li><a href="#team" class="block text-gray-300 hover:text-sui-cyan transition-colors duration-300">Team</a></li>
+                <li>
+                    <button class="w-full bg-gradient-to-r from-sui-blue to-sui-cyan px-6 py-2 rounded-full hover-glow transition-all duration-300" aria-label="Connect with us">
+                        Connect
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header> 

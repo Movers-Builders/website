@@ -1,0 +1,52 @@
+/* Import fonts */
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap');
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 20px #4DA2FF40; }
+    to { box-shadow: 0 0 30px #4DA2FF80, 0 0 40px #4DA2FF40; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #4DA2FF, #4ECDC4, #8B5CF6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.glass-card {
+    background: rgba(26, 29, 41, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(77, 162, 255, 0.2);
+}
+
+.web3-grid {
+    background-image: 
+        linear-gradient(rgba(77, 162, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(77, 162, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 30px rgba(77, 162, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.card-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+} 
