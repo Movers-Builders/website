@@ -30,10 +30,27 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://movers.builders/">
 
+    <!-- Prevent FOUC -->
+    <style>
+        .no-fouc { visibility: hidden; }
+    </style>
+
     <!-- Styles -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./css/tailwind.config.js"></script>
     <link rel="stylesheet" href="./css/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Initialize Tailwind config before the DOM loads
+        document.documentElement.classList.add('no-fouc');
+    </script>
+    <script type="module" src="./css/tailwind.config.js"></script>
+    
+    <script>
+        // Remove FOUC prevention after everything is loaded
+        window.addEventListener('load', () => {
+            document.documentElement.classList.remove('no-fouc');
+            document.documentElement.classList.add('fouc-ready');
+        });
+    </script>
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -403,17 +420,35 @@
     <script type="module" src="./js/main.js"></script>
     <script>
         // Load Components
-        fetch('./components/header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-container').innerHTML = data;
-            });
+        async function loadComponents() {
+            try {
+                // Load header
+                const headerResponse = await fetch('./components/header.html');
+                if (!headerResponse.ok) throw new Error('Failed to load header');
+                const headerData = await headerResponse.text();
+                document.getElementById('header-container').innerHTML = headerData;
 
-        fetch('./components/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            });
+                // Load footer
+                const footerResponse = await fetch('./components/footer.html');
+                if (!footerResponse.ok) throw new Error('Failed to load footer');
+                const footerData = await footerResponse.text();
+                document.getElementById('footer-container').innerHTML = footerData;
+
+                // Initialize components after loading
+                document.documentElement.classList.remove('no-fouc');
+                document.documentElement.classList.add('fouc-ready');
+            } catch (error) {
+                console.error('Error loading components:', error);
+                // Show error message to user
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg';
+                errorMessage.textContent = 'Failed to load some components. Please refresh the page.';
+                document.body.appendChild(errorMessage);
+            }
+        }
+
+        // Load components when DOM is ready
+        document.addEventListener('DOMContentLoaded', loadComponents);
     </script>
 </body>
 </html>
